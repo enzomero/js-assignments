@@ -70,7 +70,7 @@ function doubleArray(arr) {
  *    [] => [] 
  */
 function getArrayOfPositives(arr) {
-   return arr.filter((x) => (x>0))
+   return arr.filter((x) => (x>0));
 }
 
 /**
@@ -421,8 +421,16 @@ function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 function sortCitiesArray(arr) {
-   //return arr.sort();
-   throw new Error('Not implemented');
+   arr.sort(function(a,b){
+      if(a.country>b.country) return 1;
+      if(a.country<b.country) return -1;
+      return 0;
+   });
+   return arr.sort(function(a,b){
+      if(a.city>b.city && a.country===b.country) return 1;
+      if(a.city<b.city && a.country===b.country) return -1;
+      return 0;
+   });
 }
 
 /**
@@ -482,7 +490,7 @@ function getIntervalArray(start, end) {
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
 function distinct(arr) {
-   return arr.reverse().filter(function(x, i){return arr.indexOf(x,i+1)===-1}).reverse();
+   return arr.reverse().filter(function(x, i){return arr.indexOf(x,i+1)===-1}).reverse();//
 }
 
 /**
@@ -516,7 +524,12 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-   throw new Error('Not implemented');
+   let m = new Map();
+   array.map(function(x){if(!m.has(keySelector(x)))
+      m.set(keySelector(x), 
+            array.filter((y)=>(keySelector(x)===keySelector(y))
+                        ).map((z)=>(valueSelector(z))));  });
+   return m;
 }
 
 
@@ -532,7 +545,9 @@ function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 function selectMany(arr, childrenSelector) {
-    throw new Error('Not implemented');
+   let m = [];
+   arr.map((x)=>(m = m.concat(childrenSelector(x))));
+   return m;
 }
 
 
@@ -549,7 +564,8 @@ function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 function getElementByIndexes(arr, indexes) {
-    throw new Error('Not implemented');
+   indexes.map((x)=>(arr=arr[x]));
+   return arr;
 }
 
 
@@ -572,7 +588,16 @@ function getElementByIndexes(arr, indexes) {
  * 
  */
 function swapHeadAndTail(arr) {
-    throw new Error('Not implemented');
+//    if(arr.length>1){
+//    console.log(arr);
+//    let x = Math.trunc(arr.length/2);
+//    let m = arr.splice(-(x), x);
+//    console.log(m, arr);
+//    return arr.concat(m);
+//    }else{
+//       return arr;///???
+//    }
+   throw new Error('Not implemented');
 }
 
 

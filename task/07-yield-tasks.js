@@ -33,7 +33,18 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+    for(let i=99;;){
+        yield  i+' bottles of beer on the wall, '+(i--)+' bottles of beer.';
+        yield 'Take one down and pass it around, '+i+' bottle'+(i!==1? 's':'')+' of beer on the wall.';
+        if(i===1){
+             yield '1 bottle of beer on the wall, 1 bottle of beer.';
+             yield 'Take one down and pass it around, no more bottles of beer on the wall.';
+             yield  'No more bottles of beer on the wall, no more bottles of beer.';
+             yield  'Go to the store and buy some more, 99 bottles of beer on the wall.';
+             return ;
+        }
+        
+    }
 }
 
 
@@ -47,7 +58,15 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+    let x1 = 0;
+    let x2 = 1;
+    let x3;
+    for(;;){
+       x3=x1;
+       x1=x2
+       x2=x3+x1;
+       yield x3;
+    }
 }
 
 
@@ -82,7 +101,18 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
+    let res = [root];
+    let s;
+    while(res.length!==0){
+        s = res.pop();
+        if(s.chk !== 1){
+            s.chk = 1;
+            yield s;
+            if(s.children !== undefined)
+                res=res.concat(s.children.reverse());
+        }
+    }
+    return;
 }
 
 
@@ -126,7 +156,7 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+    
 }
 
 

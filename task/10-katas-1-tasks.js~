@@ -17,7 +17,32 @@
  *  ]
  */
 function createCompassPoints() {
-    throw new Error('Not implemented');
+    const step = 11.25;
+    
+    let compas= new Array();
+    let azimuth = 0;
+    var sides = ['N','E','S','W'];  // use array of cardinal directions only!
+    
+    for(let i=0;i<8;i++){
+        let obj = {};
+        azimuth = step*i;
+        obj.abbreviation= 'empty';
+        obj.azimuth=azimuth;
+        //console.log(obj);
+        compas.push(obj);
+    }
+    if(input === azimuth) obj.abbreviation=sides[x];
+    if(azimuth-input === step) obj.abbreviation=sides[x] + 'b' + sides[x+1];
+    if(azimuth-input === step*2) obj.abbreviation=sides[x] + sides[x] + sides[x+1];
+    if(azimuth-input === step*3) obj.abbreviation=sides[x] + sides[x+1] + 'b' + sides[x];
+    
+    if(input === azimuth) obj.abbreviation=sides[x] + sides[x+1];
+    if(input === azimuth) obj.abbreviation=sides[x] + sides[x+1] + 'b' + sides[x+1];
+    if(input === azimuth) obj.abbreviation=sides[x+1] + sides[x] + sides[x+1] ;
+    if(input === azimuth) obj.abbreviation=sides[x+1] + 'b' + sides[x];
+    
+    console.log(compas);
+    return ;
 }
 
 
